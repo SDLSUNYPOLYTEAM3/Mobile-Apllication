@@ -2,7 +2,7 @@
 """
 Created on Thu Mar 31 17:43:42 2022
 
-@author: roman
+@author: roman and franklin
 """
 
 import csv
