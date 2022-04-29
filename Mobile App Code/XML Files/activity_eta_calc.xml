@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ETA_calc"
+    android:orientation="vertical">
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/MapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-100dp"
+        tools:layout_editor_absoluteY="-49dp">
+    </org.osmdroid.views.MapView>
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvLocation"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Display1"-->
+<!--        tools:layout_editor_absoluteX="176dp"-->
+<!--        tools:layout_editor_absoluteY="311dp" />-->
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
