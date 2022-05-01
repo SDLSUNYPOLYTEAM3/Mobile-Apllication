@@ -18,6 +18,8 @@ print(day)
 
 
 # Open both files one to read from other to write to 
+# Sensor_Transactions_2018_02.csv was taken from https://data.lacity.org/Transportation/LADOT-Parking-Meter-Occupancy-Archive/cj8s-ivry 
+# the sensor csv file is a data file of LA parking data
 with open(r"C:\Users\Owner\Documents\Sensor_Transactions_2018_02.csv") as file_obj, open(r"C:\Users\Owner\Documents\Machine Learning\sdl2.txt",'w') as file2:
     reader_obj = csv.reader(file_obj)
     
