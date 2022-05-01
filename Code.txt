@@ -18,9 +18,9 @@ print(day)
 
 
 # Open both files one to read from other to write to 
-# Sensor_Transactions_2018_02.csv was taken from https://data.lacity.org/Transportation/LADOT-Parking-Meter-Occupancy-Archive/cj8s-ivry 
+# Sensor_Transactions_2018_01.csv was taken from https://data.lacity.org/Transportation/LADOT-Parking-Meter-Occupancy-Archive/cj8s-ivry 
 # the sensor csv file is a data file of LA parking data
-with open(r"C:\Users\Owner\Documents\Sensor_Transactions_2018_02.csv") as file_obj, open(r"C:\Users\Owner\Documents\Machine Learning\sdl2.txt",'w') as file2:
+with open(r"C:\Users\Owner\Documents\Sensor_Transactions_2018_01.csv") as file_obj, open(r"C:\Users\Owner\Documents\Machine Learning\sdl revised",'w') as file2:
     reader_obj = csv.reader(file_obj)
     
     # Check each row
@@ -41,9 +41,9 @@ with open(r"C:\Users\Owner\Documents\Sensor_Transactions_2018_02.csv") as file_o
                     count -= 1
                 else:
                     print("did not find spot 3")
-            elif count >= 1090: #80% threshold on being full (1362), this gives us a 20% threshold for error
+            elif count >= 1294: #95% threshold on being full (1362), this gives us a 5% threshold for error
                 # Write to file and add hours when one passes
-                file2.write(ten_day + one_day + "," + ten_hour + one_hour + "," + str(count)+ ",1" + "\n") #prints day, hour, number of cars, occupancy level (full=1, not full=0)
+                file2.write("Day,"+ ten_day + one_day +",Hour," + ten_hour + one_hour + "," + str(count)+ ",Full" + "\n")
                 if one_hour == "9":
                     one_hour = "0"
                     ten_hour = str(int(ten_hour) + 1)
@@ -61,10 +61,10 @@ with open(r"C:\Users\Owner\Documents\Sensor_Transactions_2018_02.csv") as file_o
                 else:
                     print("did not find spot 3")
                     
-                count = 548 #this was initially 0, however when run the code starts at a vacancy of 548 spots, thus offeset all values to make them > 0
+                count = 0 #same reason as above
             else:
                 # Write to file and add hours when one passes
-                file2.write(ten_day + one_day + "," + ten_hour + one_hour + "," + str(count)+ ",0" + "\n") #prints day, hour, number of cars, occupancy level (full=1, not full=0)
+                file2.write("Day,"+ ten_day + one_day +",Hour," + ten_hour + one_hour + "," + str(count)+ ",NotFull" + "\n")
                 if one_hour == "9":
                    one_hour = "0"
                    ten_hour = str(int(ten_hour) + 1)
@@ -73,7 +73,7 @@ with open(r"C:\Users\Owner\Documents\Sensor_Transactions_2018_02.csv") as file_o
                    one_hour = "0"
                 else:
                     one_hour = str(int(one_hour) + 1)
-                   
+                    
                  # Check for occupancy again in order to not miss the change of time
                 if row[3] == "OCCUPIED":
                     count += 1
@@ -81,22 +81,19 @@ with open(r"C:\Users\Owner\Documents\Sensor_Transactions_2018_02.csv") as file_o
                     count -= 1
                 else:
                     print("did not find spot 3")
-                   
-                count = 548 #this was initially 0, however when run the code starts at a vacancy of 548 spots, thus offeset all values to make them > 0
+                    
+                count = 548 #same reason as above    
         elif col[0] == "E":
             continue
         else:
-            #if( ten_hour == "2" and one_hour == "3"):
-             #   ten_hour = "0"
-             #   one_hour = "0"
-             #   one_day = str(int(one_day)+1)
+            
             if one_day == "9":
                 one_day = "0"
                 ten_day = str(int(ten_day) + 1)
             else:
                 one_day = str(int(one_day) + 1)
                 print (one_day)
-            count = 548 #this was initially 0, however when run the code starts at a vacancy of 548 spots, thus offeset all values to make them > 0
+            #count = 0
                 
              # Check for occupancy again in order to not miss the change of day
             if row[3] == "OCCUPIED":
@@ -105,3 +102,4 @@ with open(r"C:\Users\Owner\Documents\Sensor_Transactions_2018_02.csv") as file_o
                 count -= 1
             else:
                 print("did not find spot 3")
+          
